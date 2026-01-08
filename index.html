@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ese's Beauty Hub</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #6a0dad;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 25px;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #6a0dad;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 9px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 11px;
+      background: #6a0dad;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #580b9e;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Ese's Beauty Hub</h1>
+    <h2>Book Your Hair Appointment</h2>
+
+    <form id="booking-form">
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone" required>
+
+      <label>Hair Service</label>
+      <select id="service">
+        <option>Plaiting</option>
+        <option>Braiding</option>
+        <option>Weaving</option>
+        <option>Wig Installation</option>
+        <option>Other</option>
+      </select>
+
+      <label>Date</label>
+      <input type="date" id="date" required>
+
+      <label>Time</label>
+      <input type="time" id="time" required>
+
+      <button type="submit">Book Now</button>
+    </form>
+
+    <p class="note">You will be redirected to WhatsApp to confirm your booking.</p>
+  </div>
+
+  <script>
+    document.getElementById("booking-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let service = document.getElementById("service").value;
+      let date = document.getElementById("date").value;
+      let time = document.getElementById("time").value;
+
+      let message =
+        "Hello Ese,%0A%0A" +
+        "A new hair appointment has been booked.%0A%0A" +
+        "📌 Customer Details%0A" +
+        "Name: " + name + "%0A" +
+        "Phone: " + phone + "%0A%0A" +
+        "💇 Service: " + service + "%0A" +
+        "📅 Date: " + date + "%0A" +
+        "⏰ Time: " + time;
+
+      let whatsappURL =
+        "https://wa.me/2348159074060?text=" + message;
+
+      window.open(whatsappURL, "_blank");
+
+      document.getElementById("booking-form").reset();
+    });
+  </script>
+
+</body>
+  </html>
